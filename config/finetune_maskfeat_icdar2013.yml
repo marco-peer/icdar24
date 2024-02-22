@@ -1,0 +1,69 @@
+
+training : datasets/icdar2013_train_patches.csv 
+testing : datasets/icdar2013_test.csv
+
+
+logging_group : icdar2013
+train_label : writer
+
+super_fancy_new_name : icdar2013
+model_zoo:
+  experiment : ABLATION_MASK_RATIO_FULL_MODEL
+  model : 0.75
+
+finetune_options:
+  freeze_backbone : True
+
+log_dir: experiments
+logger : wandb
+
+img_size : 32
+init_netvlad : True
+netvlad_pooling : False
+netvlad:
+  num_clusters : 100
+  random : True
+
+model_options:
+  in_dim : -1
+  global_pool : False
+
+clip_gradients : 1.0
+
+optimizer_options: 
+  optimizer: adamw
+  base_lr: 0.0001 
+  final_lr: 0.00001
+  start_lr : 0.00001
+  warmup_epochs : 1
+  base_wd: 0.01
+  final_wd : 0.000
+  start_wd : 0.000
+  netvlad_lr_factor : 1
+  pca_lr_factor : 1
+  gmp_lr_factor : 1000
+  layer_decay : 0.25  
+
+train_options: 
+  epochs: 10
+  early_stopping : 20
+  margin : 0.1
+  sampler_m : 16
+  use_best_model : True
+  loss : msloss
+  loss_a : 2
+  loss_b : 40
+  loss_base : 0.2
+  mining_margin : 0.1
+  batch_size: 1024
+  
+eval_options : 
+  pca_dim : 512
+  num_samples : -1
+  apply_pca : 512
+  only_whitening: False
+
+val_options:
+    num_samples : -1
+
+test_batch_size : 1024

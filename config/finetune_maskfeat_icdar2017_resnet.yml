@@ -1,0 +1,67 @@
+training : datasets/icdar2017-train-binarized-patches_clustered.csv
+testing : datasets/icdar2017-test-binarized.csv
+
+# training : datasets/hisfrag20_train_patches_clustered.csv
+# testing : datasets/hisfrag20_test.csv
+# train_authors_prop : 0.95
+
+logging_group : finetune_icdar17_resnet
+train_label : writer
+
+model_zoo:
+  experiment : resnet56
+  model : 0.5
+
+
+finetune_options:
+  freeze_backbone : False
+
+log_dir: experiments
+logger : wandb
+
+img_size : 32
+
+netvlad:
+  num_clusters : 100
+  random : True
+
+model_options:
+  in_dim : -1
+  global_pool : False
+
+clip_gradients : 1.0
+
+optimizer_options: 
+  optimizer: adam
+  base_lr: 0.001 
+  final_lr: 0.00001
+  start_lr : 0
+  warmup_epochs : 5
+  base_wd: 0.0
+  final_wd : 0.0 
+  start_wd : 0.0 
+  netvlad_lr_factor : 1
+  pca_lr_factor : 1
+
+train_options: 
+  epochs: 30
+  batch_size: 1024
+  early_stopping : 10
+  margin : 0.1
+  sampler_m : 16
+  use_best_model : True
+  loss : msloss
+  loss_a : 2
+  loss_b : 40
+  loss_base : 0.2
+  mining_margin : 0.1
+
+eval_options : 
+    pca_dim : 512
+    num_samples : -1
+    apply_pca : True
+
+val_options:
+    num_samples : 2000
+
+test_batch_size : 1024

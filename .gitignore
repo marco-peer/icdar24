@@ -1,0 +1,8 @@
+experiments/
+__pycache__/
+tmp/
+retrieval/
+etc/
+simmim/
+datasets/
+visual_teaser/

@@ -1,0 +1,70 @@
+training : datasets/hisfrag20_train_patches_clustered.csv
+testing : datasets/hisfrag20_test.csv
+train_authors_prop : 0.98
+
+logging_group : hisfrag_from_scratch
+train_label : cluster
+load_checkpoint : False
+
+model_zoo:
+  experiment : ABLATION_MASK_RATIO_FULL_MODEL
+  model : 0.75
+
+finetune_options:
+  # checkpoint : '/caa/Homes01/mpeer/workspace-git/write/ssl/experiments/maskfeat_baseline_0p75_32p_4ps_bs2048_fullrun-2023-12-10-20-24/model.pt' # full run, 40.5 mAP
+  freeze_backbone : False
+
+log_dir: experiments
+logger : wandb
+
+img_size : 32
+init_netvlad : True
+netvlad_pooling : False
+
+netvlad:
+  num_clusters : 100
+  random : True
+
+model_options:
+  in_dim : -1
+  global_pool : False
+# 
+clip_gradients : 1.0
+
+optimizer_options: 
+  optimizer: adamw
+  base_lr: 0.001 
+  final_lr: 0.00001
+  start_lr : 0
+  warmup_epochs : 5
+  base_wd: 0.01
+  final_wd : 0.000
+  start_wd : 0.000
+  netvlad_lr_factor : 1
+  pca_lr_factor : 1
+  layer_decay : 0.25
+
+train_options: 
+  epochs: 50
+  batch_size: 1024 # 16
+  early_stopping : 10
+  # mixed_precision : True
+  margin : 0.1
+  sampler_m : 16
+  length_before_new_iter : 1024000
+  use_best_model : True
+  loss : msloss
+  loss_a : 2
+  loss_b : 40
+  loss_base : 0.2
+  mining_margin : 0.1
+  
+eval_options : 
+  pca_dim : 512
+  num_samples : -1
+  apply_pca : True
+
+val_options:
+    num_samples : 2000
+
+test_batch_size : 1024

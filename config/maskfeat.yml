@@ -1,0 +1,74 @@
+training : datasets/ssl_train_full.csv
+validation : datasets/validation_icdar2017.csv
+testing : datasets/test_icdar2017.csv
+
+log_dir: experiments
+logger : wandb
+
+define: &MASK_TYPE "binary"
+define: &BINARIZATION "ISAUVOLA"
+define: &MASK_RATIO 0.75
+define: &EMBEDDING_SIZE 512
+define: &HOG True
+
+super_fancy_new_name : 'no_preprocessing'
+save_every_n : 20
+img_size : 32
+
+model_name : mae
+model_options : 
+  patch_size : 4
+  hog_pool : 4
+  depth : 8
+  decoder_depth : 1
+  embed_dim : *EMBEDDING_SIZE
+  use_hog : *HOG
+
+clip_gradients : 0.02
+
+optimizer_options: 
+  optimizer: adamw 
+  base_lr: 0.0008 # scaled with factor 4 bc of batch size
+  final_lr: 0.000008
+  start_lr : 0.00008
+  warmup_epochs : 5
+  base_wd:  0.05 
+  final_wd : 0.05 
+  start_wd : 0.05 
+
+train_options: 
+  epochs: 200 
+  batch_size: 64       
+  num_samples : 32   
+  num_keypoints : 400                   
+  early_stopping : 500
+  mask_ratio : *MASK_RATIO
+  mask_type : *MASK_TYPE 
+  binarization : *BINARIZATION
+  mixed_precision : True
+
+
+page_transforms:
+  crop_size : 256
+  grayscale : 0.2
+  binarize : 0.2
+
+patch_transforms : 
+  jitter : ""
+  erosion : "" 
+  dilation : "" 
+  affine : ""
+
+eval_options : 
+    pca_dim : 512
+    num_samples : -1
+    apply_pca : False
+
+val_options:
+    num_samples : 2000
+  
+
+logging_group : maskfeat
+
+
+        

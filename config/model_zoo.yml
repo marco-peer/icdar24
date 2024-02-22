@@ -1,0 +1,31 @@
+
+ABLATION_MASK_RATIO: 
+    0.4 : /caa/Homes01/mpeer/workspace-git/write/ssl/experiments/binary_ISAUVOLA_MASK0.4_512_HOGTrue-2023-12-25-12-30/best_model.pt
+    0.6 : /caa/Homes01/mpeer/workspace-git/write/ssl/experiments/binary_ISAUVOLA_MASK0.6_512_HOGTrue-2023-12-25-12-46/best_model.pt
+    0.75 : /caa/Homes01/mpeer/workspace-git/write/ssl/experiments/binary_ISAUVOLA_MASK0.75_512_HOGTrue-2023-12-25-11-49/best_model.pt
+    0.9 : /caa/Homes01/mpeer/workspace-git/write/ssl/experiments/binary_ISAUVOLA_MASK0.9_512_HOGTrue-2023-12-25-11-50/best_model.pt
+    0.5 : /caa/Homes01/mpeer/workspace-git/write/ssl/experiments/maskfeat_baseline_0p75_32p_4ps_bs2048_fullrun_512emb_0p02clip_dec1-2023-12-21-10-27/best_model.pt
+
+ABLATION_MASK_RATIO_FULL_MODEL: 
+    0.4 : /caa/Homes01/mpeer/workspace-git/write/ssl/experiments/binary_ISAUVOLA_MASK0.4_512_HOGTrue-2023-12-25-12-30/model_final.pt
+    0.6 : /caa/Homes01/mpeer/workspace-git/write/ssl/experiments/binary_ISAUVOLA_MASK0.6_512_HOGTrue-2023-12-25-12-46/model_final.pt
+    0.75 : /caa/Homes01/mpeer/workspace-git/write/ssl/experiments/binary_ISAUVOLA_MASK0.75_512_HOGTrue-2023-12-25-11-49/model_final.pt
+    0.9 : /caa/Homes01/mpeer/workspace-git/write/ssl/experiments/binary_ISAUVOLA_MASK0.9_512_HOGTrue-2023-12-25-11-50/model_final.pt
+    0.5 : /caa/Homes01/mpeer/workspace-git/write/ssl/experiments/maskfeat_baseline_0p75_32p_4ps_bs2048_fullrun_512emb_0p02clip_dec1-2023-12-21-10-27/model_final.pt
+
+ABLATION_EMBEDDING_DIM_FULL_MODEL:
+    128 : /caa/Homes01/mpeer/workspace-git/write/ssl/experiments/binary_ISAUVOLA_MASK0.75_128_HOGTrue-2024-01-07-18-03/model_final.pt
+    256 : /caa/Homes01/mpeer/workspace-git/write/ssl/experiments/binary_ISAUVOLA_MASK0.75_256_HOGTrue-2023-12-30-20-44/model_final.pt
+    384 : /caa/Homes01/mpeer/workspace-git/write/ssl/experiments/binary_ISAUVOLA_MASK0.75_384_HOGTrue-2023-12-30-20-44/model_final.pt
+
+ABLATION_TARGET_FEATURES:
+    'RGB' : /caa/Homes01/mpeer/workspace-git/write/ssl/experiments/rgb_ISAUVOLA_MASK0.75_512_HOGFalse-2023-12-31-17-18/model_final.pt
+    'HOG_RGB' : /caa/Homes01/mpeer/workspace-git/write/ssl/experiments/rgb_SAUVOLA_MASK0.75_512_HOGTrue-2024-01-03-18-52/model_final.pt
+    'HOG_GRAY' : /caa/Homes01/mpeer/workspace-git/write/ssl/experiments/gray_SAUVOLA_MASK0.75_512_HOGTrue-2024-01-04-23-30/model_final.pt
+
+ABLATION_BINARIZATION:
+    'SU' : /caa/Homes01/mpeer/workspace-git/write/ssl/experiments/binary_SU_MASK0.75_512_HOGTrue-2024-01-02-22-27/model_final.pt
+    'OTSU' : /caa/Homes01/mpeer/workspace-git/write/ssl/experiments/binary_OTSU_MASK0.75_512_HOGTrue-2024-01-07-11-19/model_final.pt
+
+SAM:
+    'no_preprocessing' : /caa/Homes01/mpeer/workspace-git/write/ssl/experiments/no_preprocessing-2024-01-09-11-18/model_final.pt

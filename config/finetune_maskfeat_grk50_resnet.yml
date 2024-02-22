@@ -1,0 +1,71 @@
+training : /caa/Homes01/mpeer/workspace-git/write/ssl/datasets/grk50/grk50_5k_patches_christlein.csv
+validation :  /caa/Homes01/mpeer/workspace-git/write/ssl/datasets/grk50/grk50_5k_patches_christlein.csv
+testing :  /caa/Homes01/mpeer/workspace-git/write/ssl/datasets/grk50/grk50_5k_patches_christlein.csv
+
+logging_group : grk50_resnet20
+train_label : cluster
+# validation : /caa/Homes01/mpeer/workspace-git/write/ssl/datasets/grk50/GRK50_patches_color_rsift_test.csv
+# testing : /caa/Homes01/mpeer/workspace-git/write/ssl/datasets/grk50/GRK50_patches_color_rsift_test.csv
+
+
+
+model_zoo:
+  experiment : resnet20
+  model : 0.75
+
+finetune_options:
+  freeze_backbone : False
+
+log_dir: experiments
+logger : wandb
+
+img_size : 32
+init_netvlad : False
+netvlad_pooling : False
+
+netvlad:
+  num_clusters : 32
+  random : True
+
+model_options:
+  in_dim : -1
+  global_pool : False
+
+clip_gradients : 0.25
+
+optimizer_options: 
+  optimizer: adam
+  base_lr: 0.0001 
+  final_lr: 0.00001
+  start_lr : 0
+  warmup_epochs : 5
+  base_wd: 0.00
+  final_wd : 0.000
+  start_wd : 0.000
+  netvlad_lr_factor : 1
+  pca_lr_factor : 1
+
+train_options: 
+  epochs: 30
+  batch_size: 1024
+  early_stopping : 10
+  margin : 0.1
+  sampler_m : 16
+  length_before_new_iter : 256000
+  use_best_model : True
+  loss : msloss
+  loss_a : 2
+  loss_b : 40
+  loss_base : 0.5
+  mining_margin : 0.1
+  
+eval_options : 
+  pca_dim : 512
+  num_samples : -1
+  apply_pca : False
+  only_whitening: False
+
+val_options:
+    num_samples : -1
+
+test_batch_size : 1024
