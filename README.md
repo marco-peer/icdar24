@@ -4,9 +4,9 @@ This repository contains the code implementation of our paper
 
 Marco Peer, Florian Kleber and Robert Sablatnig : **SAGHOG: Self-Supervised Autoencoder for Generating HOG Features for Writer Retrieval**,
 
-an two stage approach using a masked autoencoder predicting the HOG features. We finetune our network by appending NetRVLAD, currently under review at ICDAR2024. SAGHOG works exceptionally well for large, complex datasets with small amounts of handwriting such as HisFrag20, where we outperform SOTA by ~12% mAP. 
+a two stage approach using a masked autoencoder predicting the HOG features. We finetune our network by appending NetRVLAD, currently under review at ICDAR2024. SAGHOG works exceptionally well for large, complex datasets with small amounts of handwriting such as HisFrag20, where we outperform SOTA by ~12% mAP. 
 
-The code hasn't been completely cleaned up yet, but should be enough to either reuse parts of it (model, training code, etc.) or take a closer look for your own work.
+The code hasn't been completely cleaned up yet, but should be enough to either reuse parts of it (model, training code, etc.) or take a closer look for your own work or reviewing.
 
 ## Installation
 
@@ -20,8 +20,8 @@ The repository uses wandb for logging.
 
 We provide four scripts (two with a color version each for RGB images) to extract the patches from the documents:
 
-- extract_patches_only : only extracts patches without clustering (mainly used for test sets)
-- extract_patches : extracts patches and clusters their descriptors (mainly used to train sets)
+- `utils/extract_patches_only.py` : only extracts patches without clustering (mainly used for test sets)
+- `utils/extract_patches.py` : extracts patches and clusters their descriptors (mainly used to train sets)
 
 The respective configs for the scripts to reproduce our results are located in the `config` directory.
 
