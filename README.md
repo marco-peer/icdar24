@@ -58,7 +58,9 @@ where `root` is the directory containing the images (e.g. the patches) and `labe
 
 ## Models and dataset
 
-Models and dataset are available soon (or just drop me a mail if you need it before mpeer@cvl.tuwien.ac.at)
+I currently do not intend to publish the final dataset (the 24k documents preprocessed with SAM) for pretraining since you can generate it with the scripts in `preprocess`, the original datasets are available at the webpages of the corresponding competitions. 
+
+I will upload pretrained model checkpoints soon. However, if you need them sooner or you want the dataset, just drop me a mail - mpeer@cvl.tuwien.ac.at - and I am happy to send it to you.
 
 ## Questions
 
