@@ -4,7 +4,7 @@ This repository contains the code implementation of our paper
 
 Marco Peer, Florian Kleber and Robert Sablatnig : **SAGHOG: Self-Supervised Autoencoder for Generating HOG Features for Writer Retrieval**,
 
-a two stage approach using a masked autoencoder predicting the HOG features. We finetune our network by appending NetRVLAD, currently under review at ICDAR2024. SAGHOG works exceptionally well for large, complex datasets with small amounts of handwriting such as HisFrag20, where we outperform SOTA by ~12% mAP. 
+a two stage approach using a masked autoencoder predicting the HOG features. We finetune our network by appending NetRVLAD. SAGHOG works exceptionally well for large, complex datasets with small amounts of handwriting such as HisFrag20, where we outperform SOTA by ~12% mAP. The paper is accepted for presentation at ICDAR2024. Check it out on arXiv [here](http://arxiv.org/abs/2404.17221).
 
 The code hasn't been completely cleaned up yet, but should be enough to either reuse parts of it (model, training code, etc.) or take a closer look for your own work or reviewing.
 
@@ -64,4 +64,4 @@ I will upload pretrained model checkpoints soon. However, if you need them soone
 
 ## Questions
 
-If you have questions, feel free to contact me. The paper will be also publicly available if accepted at ICDAR, otherwise I will upload it to arxiv!
+If you have questions, feel free to contact me. 
